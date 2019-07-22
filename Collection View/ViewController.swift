@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "DetailsSegue" {
+        if segue.identifier == "DetailSegue" {
             if let dest = segue.destination as? DetailViewController, let index = collectionView.indexPathsForSelectedItems?.first {
                 dest.selection = itemsArray[index.row]
             }
