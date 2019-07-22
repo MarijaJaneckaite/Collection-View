@@ -22,10 +22,14 @@ class ViewController: UIViewController {
         layout.itemSize = CGSize(width: width, height: width)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "DetailSegue", sender: indexPath)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "DetailSegue" {
-            if let dest = segue.destination as? DetailViewController, let index = collectionView.indexPathsForSelectedItems?.first {
+            if let dest = segue.destination as? DetailViewController, let index = sender as? IndexPath {
                 dest.selection = itemsArray[index.row]
             }
         }
